@@ -4,6 +4,7 @@ import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
+import com.qualcomm.robotcore.hardware.CRServo;
 
 /**
  * Placeholder TeleOp for GoBildy. Wire up drivetrain and subsystem hardware here as the robot
@@ -14,6 +15,8 @@ public class GoBildyTeleOp extends OpMode {
 
     private DcMotor frontLeft, frontRight, backLeft, backRight;
     private DcMotor intake;
+    CRServo intakeLeft;
+    CRServo intakeRight;
 
     @Override
     public void init() {
@@ -22,6 +25,8 @@ public class GoBildyTeleOp extends OpMode {
         backLeft = hardwareMap.get(DcMotor.class, "BL");
         backRight = hardwareMap.get(DcMotor.class, "BR");
         intake = hardwareMap.get(DcMotor.class, "Intake");
+        intakeLeft  = hardwareMap.get(CRServo.class, "IntakeLeft");
+        intakeRight = hardwareMap.get(CRServo.class, "IntakeRight");
 
         // Mecanum drives typically need one side reversed so both sides drive
         // the robot forward with the same joystick direction.
@@ -30,6 +35,7 @@ public class GoBildyTeleOp extends OpMode {
         backLeft.setDirection(DcMotorSimple.Direction.FORWARD);
         frontRight.setDirection(DcMotorSimple.Direction.REVERSE);
         backRight.setDirection(DcMotorSimple.Direction.REVERSE);
+        intakeRight.setDirection(CRServo.Direction.REVERSE);
 
         telemetry.addData("Status", "Initialized");
         telemetry.update();
@@ -69,6 +75,7 @@ public class GoBildyTeleOp extends OpMode {
         // Right trigger spins the intake forward, left trigger spins it backward.
         double intakePower = gamepad1.right_trigger - gamepad1.left_trigger;
         intake.setPower(intakePower);
+
 
 
         telemetry.addData("Front Left Power", (frontLeftPower / max) * speedLimiter);
