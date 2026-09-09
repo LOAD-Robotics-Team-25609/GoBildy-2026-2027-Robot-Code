@@ -75,7 +75,15 @@ public class GoBildyTeleOp extends OpMode {
         // Right trigger spins the intake forward, left trigger spins it backward.
         double intakePower = gamepad1.right_trigger - gamepad1.left_trigger;
         intake.setPower(intakePower);
+        if (gamepad1.right_trigger > 0.1) {
+            // Intake in
+            intakeLeft.setPower(1.0);
+            intakeRight.setPower(1.0);
 
+        } else {
+            intakeLeft.setPower(0.0);
+            intakeRight.setPower(0.0);
+        }
 
 
         telemetry.addData("Front Left Power", (frontLeftPower / max) * speedLimiter);
