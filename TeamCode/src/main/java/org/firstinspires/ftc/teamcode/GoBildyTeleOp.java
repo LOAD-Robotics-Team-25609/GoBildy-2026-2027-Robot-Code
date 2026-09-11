@@ -31,10 +31,10 @@ public class GoBildyTeleOp extends OpMode {
         // Mecanum drives typically need one side reversed so both sides drive
         // the robot forward with the same joystick direction.
         // Start with this guess; we'll fix any wheel that spins backward below.
-        frontLeft.setDirection(DcMotorSimple.Direction.FORWARD);
-        backLeft.setDirection(DcMotorSimple.Direction.FORWARD);
-        frontRight.setDirection(DcMotorSimple.Direction.REVERSE);
-        backRight.setDirection(DcMotorSimple.Direction.REVERSE);
+        frontLeft.setDirection(DcMotorSimple.Direction.REVERSE);
+        backLeft.setDirection(DcMotorSimple.Direction.REVERSE);
+        frontRight.setDirection(DcMotorSimple.Direction.FORWARD);
+        backRight.setDirection(DcMotorSimple.Direction.FORWARD);
         intakeRight.setDirection(CRServo.Direction.REVERSE);
 
         telemetry.addData("Status", "Initialized");
