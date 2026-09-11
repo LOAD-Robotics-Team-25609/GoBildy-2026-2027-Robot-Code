@@ -64,8 +64,8 @@ public class GoBildyTeleOp extends OpMode {
         double max = Math.max(1.0, Math.max(Math.abs(frontLeftPower), Math.max(Math.abs(backLeftPower),
                 Math.max(Math.abs(frontRightPower), Math.abs(backRightPower)))));
 
-        // Drive is capped at 30% power unless the left bumper is held, which unlocks full speed.
-        double speedLimiter = gamepad1.left_bumper ? 1.0 : 0.3;
+        // Drive is capped at 60% power unless the left bumper is held, which unlocks full speed.
+        double speedLimiter = gamepad1.left_bumper ? 1.0 : 0.6;
 
         frontLeft.setPower((frontLeftPower / max) * speedLimiter);
         backLeft.setPower((backLeftPower / max) * speedLimiter);
