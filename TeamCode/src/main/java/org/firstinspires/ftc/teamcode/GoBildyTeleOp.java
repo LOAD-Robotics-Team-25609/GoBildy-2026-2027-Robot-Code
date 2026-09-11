@@ -85,7 +85,7 @@ public class GoBildyTeleOp extends OpMode {
             intakeRight.setPower(0.0);
         }
 
-
+        telemetry.addData("Speed Mode", gamepad1.left_bumper ? "Full (100%)" : "Limited (60%)");
         telemetry.addData("Front Left Power", (frontLeftPower / max) * speedLimiter);
         telemetry.addData("Front Right Power", (frontRightPower / max) * speedLimiter);
         telemetry.addData("Back Left Power", (backLeftPower / max) * speedLimiter);
